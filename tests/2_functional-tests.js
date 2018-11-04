@@ -7,16 +7,14 @@
 */
 
 const chaiHttp = require('chai-http');
-const chai = require('chai');
-const assert = chai.assert;
-const server = require('../server');
+const chai     = require('chai');
+const assert   = chai.assert;
+const server   = require('../server');
 
 chai.use(chaiHttp);
 
 suite('Functional Tests', function() {
-
   suite('Routing Tests', function() {
-    
     suite('GET /api/convert => conversion object', function() {
       
       test('Convert 10L (valid input)', function(done) {
@@ -98,7 +96,5 @@ suite('Functional Tests', function() {
       });
       
     });
-
   });
-
 });
