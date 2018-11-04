@@ -7,13 +7,10 @@
 */
 
 function ConvertHandler() {
-  
   this.getNum = function(input) {
     let result;
     const validNumber = /^\d+(\.\d+)?(\/\d+)?[a-zA-Z]+/;
     const noNumber = /^[a-zA-Z]+$/;
-    
-    //console.log("input: ", input);
     
     if (validNumber.test(input)) {
       result = input.match(/^\d+(\.\d+)?(\/\d+)?/)[0];
@@ -27,7 +24,6 @@ function ConvertHandler() {
     } else if (noNumber.test(input)) return 1;
     else return "invalid number";
   };
-  
   
   this.getUnit = function(input) {
     const unit = input.match(/[a-zA-Z]+$/)[0];

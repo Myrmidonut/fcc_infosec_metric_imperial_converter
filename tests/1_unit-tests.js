@@ -6,14 +6,13 @@
 *       (if additional are added, keep them at the very end!)
 */
 
-const chai = require('chai');
-const assert = chai.assert;
+const chai           = require('chai');
+const assert         = chai.assert;
 const ConvertHandler = require('../controllers/convertHandler.js');
 
 const convertHandler = new ConvertHandler();
 
 suite('Unit Tests', function(){
-  
   suite('Function convertHandler.getNum(input)', function() {
     
     test('Whole number input', function(done) {
@@ -143,5 +142,4 @@ suite('Unit Tests', function(){
     });
     
   });
-
 });
