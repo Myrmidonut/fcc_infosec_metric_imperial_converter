@@ -1,13 +1,5 @@
-/*
-*
-*
-*       Complete the handler logic below
-*       
-*       
-*/
-
 function ConvertHandler() {
-  this.getNum = function(input) {
+  this.getNum = input => {
     let result;
     const validNumber = /^\d+(\.\d+)?(\/\d+)?[a-zA-Z]+/;
     const noNumber = /^[a-zA-Z]+$/;
@@ -25,9 +17,12 @@ function ConvertHandler() {
     else return "invalid number";
   };
   
-  this.getUnit = function(input) {
-    const unit = input.match(/[a-zA-Z]+$/)[0];
+  this.getUnit = input => {
+    let unit;
     let result;
+
+    if (input.match(/[a-zA-Z]+$/) === null) unit = "invalid unit"
+    else unit = input.match(/[a-zA-Z]+$/)[0];
     
     switch (unit) {
       case "gal":
@@ -51,7 +46,7 @@ function ConvertHandler() {
     return result;
   };
   
-  this.getReturnUnit = function(initUnit) {
+  this.getReturnUnit = initUnit => {
     let result;
     
     switch (initUnit) {
@@ -86,7 +81,7 @@ function ConvertHandler() {
     return result;
   };
 
-  this.spellOutUnit = function(unit) {
+  this.spellOutUnit = unit => {
     let result;
     
     switch (unit) {
@@ -121,7 +116,7 @@ function ConvertHandler() {
     return result;
   };
   
-  this.convert = function(initNum, initUnit) {
+  this.convert = (initNum, initUnit) => {
     const galToL = 3.78541;
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
@@ -150,16 +145,16 @@ function ConvertHandler() {
         default:
           result = initNum;
       }
-      result = Math.round(result * 1000000) / 1000000;
+      
+      result = Math.round(result * 100000) / 100000;
     } else if (initNum === "invalid number") result = initNum;
     
     return result;
   };
   
-  this.getString = function(initNum, initUnit, returnNum, returnUnit) {
+  this.getString = (initNum, initUnit, returnNum, returnUnit) => {
     let result;
-    
-    console.log(initNum, initUnit, returnNum, returnUnit);
+
     if (returnNum === "invalid number") result = "invalid number";
     else if (returnUnit === "invalid unit") result = "invalid unit";
     else result = initNum + " " + initUnit + " converts to " + returnNum + " " + returnUnit;
