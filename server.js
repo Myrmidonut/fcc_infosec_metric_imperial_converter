@@ -20,9 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //Index page (static HTML)
 app.route('/')
-  .get((req, res) => {
-    res.sendFile(process.cwd() + '/views/index.html');
-  });
+  .get((req, res) => res.sendFile(process.cwd() + '/views/index.html'));
 
 //For FCC testing purposes
 fccTestingRoutes(app);
@@ -41,15 +39,15 @@ app.use((req, res, next) => {
 app.listen(process.env.PORT || 3000, () => {
   console.log("Listening on port " + process.env.PORT);
   
-  if (process.env.NODE_ENV==='test') {
+  if (process.env.NODE_ENV === 'test') {
     console.log('Running Tests...');
+    
     setTimeout(() => {
       try {
         runner.run();
-      } catch(e) {
-        const error = e;
-          console.log('Tests are not valid:');
-          console.log(error);
+      } catch(error) {
+        console.log('Tests are not valid:');
+        console.log(error);
       }
     }, 1500);
   }
