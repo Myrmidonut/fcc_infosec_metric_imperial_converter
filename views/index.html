@@ -85,10 +85,17 @@
         const url = `/api/convert?input=${query}`;
 
         fetch(url)        
-        .then(response => response.json())
+        .then(response => response.text())
         .then(data => {
-          result.textContent = data.string;
-          jsonResult.textContent = JSON.stringify(data);
+          try {
+            const jsonReturn = JSON.parse(data);
+            
+            result.textContent = jsonReturn.string;
+            jsonResult.textContent = JSON.stringify(jsonReturn);
+          } catch(err) {
+            result.textContent = data;
+            jsonResult.textContent = data;
+          }
         })
         .catch(error => console.log(error))
       })
