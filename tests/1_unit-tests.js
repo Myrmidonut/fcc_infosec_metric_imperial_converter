@@ -9,7 +9,6 @@
 const chai           = require('chai');
 const assert         = chai.assert;
 const ConvertHandler = require('../controllers/convertHandler.js');
-
 const convertHandler = new ConvertHandler();
 
 suite('Unit Tests', function(){
@@ -49,7 +48,7 @@ suite('Unit Tests', function(){
       const input = "mi";
       assert.equal(convertHandler.getNum(input), 1);
       done();
-    }); 
+    });
     
   });
   
@@ -67,7 +66,7 @@ suite('Unit Tests', function(){
       const input = "test";
       assert.equal(convertHandler.getUnit(input), "invalid unit");
       done();
-    });  
+    });
     
   });
   
