@@ -3,28 +3,26 @@
   <head>
     <title>Metric - Imperial Converter</title>
     
-    <meta name="description" content="A cool thing made with HyperDev">
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="shortcut icon" href="https://cdn.hyperdev.com/us-east-1%3A52a203ff-088b-420f-81be-45bf559d01b1%2Ffavicon.ico" type="image/x-icon"/>
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="./public/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
   </head>
   
   <body>
-    <div class="container">
-      
-      <header>
-        <h2>Information Security Project: Metric - Imperial Converter</h2>
-      </header>
-      
-      <h3>User Stories</h3>
+    
+    <header class="container">
+      <h1>Information Security Project: Metric - Imperial Converter</h1>
+    </header>
+    
+    <main class="container">
+      <h2>User Stories:</h2>
       <ol class="user-stories">
         <li>I will help prevent the client from trying to <code>guess (sniff) the MIME type</code>.</li>
         <li>I will prevent <code>cross-site scripting</code> (XSS) attacks.</li>
-        <li>I can <code>GET /api/convert</code> with a single parameter containing an accepted <code>number</code> and <code>unit</code> and have it converted.<br>
+        <li>I can <strong>GET</strong> <code>/api/convert</code> with a single parameter containing an accepted <code>number</code> and <code>unit</code> and have it converted.<br>
         Hint: Split the input by looking for the index of the first character.</li>
         <li>I can convert <code>'gal'</code> to <code>'L'</code> and vice versa. <b>(1 gal to 3.78541 L)</b></li>
         <li>I can convert <code>'lbs'</code> to <code>'kg'</code> and vice versa. <b>(1 lbs to 0.453592 kg)</b></li> 
@@ -39,66 +37,43 @@
       </ol>
       
       <h3>Example usage:</h3>
-      <code>/api/convert?input=4gal</code><br>
-      <code>/api/convert?input=1/2km</code><br>
-      <code>/api/convert?input=5.4/3lbs</code><br>
-      <code>/api/convert?input=kg</code><br>
+      <code>GET /api/convert?input=4gal</code><br>
+      <code>GET /api/convert?input=1/2km</code><br>
+      <code>GET /api/convert?input=5.4/3lbs</code><br>
+      <code>GET /api/convert?input=kg</code>
       
       <h3>Example return:</h3>
       <code>{initNum: 3.1, initUnit: 'mi', returnNum: 4.98895, returnUnit: 'km', string: '3.1 miles converts to 4.98895 kilometers'}</code>
       
       <hr>
       
-      <div id="testui">
-        <h3>Front-End:</h3>
-        <form id="convertForm" class="border" method="post" action="/api/convert">
-          <input type="text" id="convertField" name="input" placeholder="3.1mi">
-          <input id="convert" type="submit" value="Convert!">
-        </form>
-        <p>
-          <strong>Result: </strong><span id="result"></span>
-        </p>
-        <p>
-          <strong>JSON: </strong><span id="jsonResult"></span>
-        </p>
-      </div>
+      <h2>API:</h2>
+      <h3>Unit Converter:</h3>
+      <p>
+        <strong>miles</strong> (mi) and <strong>kilometers</strong> (km)<br>
+        <strong>gallons</strong> (gal) and <strong>liters</strong> (l)<br>
+        <strong>pounds</strong> (lbs) and <strong>kilograms</strong> (kg)
+      </p>
+      <form id="convertForm" class="border" method="post" action="/api/convert">
+        <input type="text" id="convertField" name="input" placeholder="3.1mi">
+        <input id="convert" type="submit" value="Convert!">
+      </form>
+      <p>
+        <strong>Result: </strong><span id="result"></span>
+      </p>
+      <p>
+        <strong>JSON: </strong><span id="jsonResult"></span>
+      </p>
       
-      <hr>
-      
-      <div class="footer">
-        <p>
-          by <a href="https://github.com/Myrmidonut/fcc_infosec_metric_imperial_converter" title="GitHub Repository" target="_blank">Frederik</a> | <a href="https://learn.freecodecamp.org/" title="Learn to code at freeCodeCamp" target="_blank">freeCodeCamp</a>
-        </p>
-      </div>
-      
-    </div>
+    </main>
     
-    <script>
-      const form = document.getElementById("convertForm");
-      const result = document.getElementById("result");
-      const jsonResult = document.getElementById("jsonResult");
-
-      form.addEventListener("submit", e => {
-        e.preventDefault();
-        
-        const query = document.getElementById("convertField").value;
-        const url = `/api/convert?input=${query}`;
-
-        fetch(url)        
-        .then(response => response.text())
-        .then(data => {
-          try {
-            const jsonReturn = JSON.parse(data);
-            
-            result.textContent = jsonReturn.string;
-            jsonResult.textContent = JSON.stringify(jsonReturn);
-          } catch(err) {
-            result.textContent = data;
-            jsonResult.textContent = data;
-          }
-        })
-        .catch(error => console.log(error))
-      })
-    </script>
+    <footer class="container">
+      <hr>
+      <p>
+        by <a href="https://github.com/Myrmidonut/fcc_infosec_metric_imperial_converter" title="GitHub Repository" target="_blank">Frederik</a> | <a href="https://learn.freecodecamp.org/" title="Learn to code at freeCodeCamp" target="_blank">freeCodeCamp</a>
+      </p>
+    </footer>
+    
+    <script src="script.js"></script>
   </body>
 </html>
