@@ -20,6 +20,7 @@ form.addEventListener("submit", e => {
       result.textContent = data;
       jsonResult.textContent = data;
     }
+    form.reset();
   })
   .catch(error => console.log(error))
 })

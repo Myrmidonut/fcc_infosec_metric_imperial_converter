@@ -41,3 +41,17 @@ ul {
 li {
   margin-bottom: 1em;
 }
+
+h1 {
+  line-height: initial;
+}
+
+input[type="text"] {
+  padding: 5px;
+  font-size: 16px;
+}
+
+input[type="submit"] {
+  height: 32px;
+  font-size: 16px;
+}
