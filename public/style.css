@@ -32,6 +32,7 @@ a {
 
 ol {
 	list-style-position: inside;
+  padding-left: 0;
 }
 
 ul {
@@ -54,4 +55,8 @@ input[type="text"] {
 input[type="submit"] {
   height: 32px;
   font-size: 16px;
+}
+
+#jsonResult {
+  word-wrap: break-word;
 }
