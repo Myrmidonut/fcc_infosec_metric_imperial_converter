@@ -1,7 +1,9 @@
 # Metric - Imperial Converter
 
 ## Introduction
-A unit converter for metric and imperial values.
+A unit converter for metric and imperial values.  
+
+Testing is done with Chai.
 
 This project is part of freeCodeCamps Information Security and Quality Assurance certificate.
 
